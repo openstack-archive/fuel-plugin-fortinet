@@ -1,0 +1,89 @@
+attributes:
+  metadata:
+    # Settings group can be one of "general", "security", "compute", "network",
+    # "storage", "logging", "openstack_services" and "other".
+    group: 'network'
+    restrictions:
+      - condition: "not (cluster:net_provider == 'neutron' and networking_parameters:segmentation_type == 'vlan')"
+        message: "Please use Neutron with VLAN segmentation, the only network type supported with fortigate plugin."
+
+  fortigate_api_ip:
+    value: ""
+    label: 'Enter the IP address of FortiGate RESTful API'
+    description: 'Enter the IP address of FortiGate RESTful API'
+    weight: 24
+    type: "text"
+    regex:
+      source: '^((?:\d|1?\d\d|2[0-4]\d|25[0-5])(?:\.(?:\d|1?\d\d|2[0-4]\d|25[0-5])){3})|(?:^)$'
+      error: "Invalid IP address"
+
+  fortigate_api_username:
+    value: "admin"
+    label: "Enter admin username of FortiGate"
+    description: "Enter admin username of FortiGate"
+    weight: 25
+    type: "text"
+
+  fortigate_api_password:
+    value: ""
+    label: "Enter the admin password of FortiGate"
+    description: "Enter the admin password of FortiGate"
+    weight: 26
+    type: "password"
+
+  fortigate_api_protocol:
+    value: "https"
+    label: "Select the protocol of FortiGate RESTful API"
+    description: "Select protocol of FortiGate RESTful API"
+    weight: 27
+    type: "select"
+    values:
+      - data: "http"
+        label: "http"
+      - data: "https"
+        label: "https"
+
+  fortigate_api_port:
+    value: "443"
+    label: "Select port number of FortiGate RESTful API"
+    description: "Enter the tcp port number of FortiGate RESTful API"
+    weight: 28
+    type: "select"
+    values:
+      - data: "443"
+        label: "443"
+      - data: "80"
+        label: "80"
+
+  fortigate_tenant_port:
+    value: ""
+    label: "Enter the physical port on FortiGate for tenant private network"
+    description: "Enter the physical port on FortiGate to handle tenant traffic"
+    weight: 29
+    type: "text"
+
+  fortigate_external_port:
+    value: ""
+    label: "Enter the physical port on FortiGate for external network"
+    descrption: "Enter the physical port on FortiGate for external network"
+    weight: 30
+    type: "text"
+
+  fortigate_npu_available:
+    value: "True"
+    label: "Whether FortiGate has hardware NPU"
+    description: "Whether FortiGate has hardware NPU"
+    weight: 31
+    type: "select"
+    values:
+      - data: "True"
+        label: "True"
+      - data: "False"
+        label: "False"
+
+  fortigate_fwaas_enable:
+    type: "checkbox"
+    weight: 32
+    value: false
+    label: "Enable Fortigate FWaaS"
+    description: "Whether use FortiGate for FWaaS"
