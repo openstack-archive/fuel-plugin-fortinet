@@ -37,9 +37,6 @@ class neutron::configure_fortigate_fwaas {
     command     => 'neutron-db-manage --config-file /etc/neutron/neutron.conf \
 --config-file /etc/neutron/plugin.ini --service fwaas upgrade head',
     path        => '/usr/bin',
-    refreshonly => true,
-    tries       => 10,
-    try_sleep   => 10,
     require     => Package['neutron-fwaas'],
     notify      => Service['neutron-server'],
   }
