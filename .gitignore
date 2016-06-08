@@ -2,4 +2,4 @@
 .build
 *.pyc
 *.rpm
-.build
+doc/build
