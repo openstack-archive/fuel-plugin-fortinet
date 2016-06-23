@@ -4,7 +4,7 @@ Installation Guide
 How to install Fuel Master
 --------------------------
 
-Please refer to `Mirantis official documentation for Fuel 8.0 <https://docs.mirantis.com/openstack/fuel/fuel-8.0/pdfs.html>`_ for the installation of Fuel master node.
+Please refer to `Mirantis official documentation for Fuel 8.0 <https://docs.mirantis.com/openstack/fuel/fuel-8.0/pdfs.html>`_ for the installation of Fuel master node or `this quickstart guide <https://docs.mirantis.com/openstack/fuel/fuel-8.0/quickstart-guide.html#installing-mirantis-openstack-manually>`_ to setup a demo environment.
 
 How to install the plugin
 -------------------------

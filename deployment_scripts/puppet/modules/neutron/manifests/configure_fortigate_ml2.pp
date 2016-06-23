@@ -34,10 +34,18 @@ class neutron::configure_fortigate_ml2 {
     notify   => Service['neutron-server'],
   }
 
-  package { 'eventlet':
-    ensure   => latest,
-    provider => 'pip',
-    require  => Exec['upgrade pip'],
+#Notes:(JerryZhao) until puppet is upgraded to include this fix,
+# https://github.com/puppetlabs/puppet/pull/5024, use pip cmd directly.
+#  package { 'eventlet':
+#    ensure   => latest,
+#    provider => 'pip',
+#    require  => Exec['upgrade pip'],
+#  }
+
+  exec { 'upgrade eventlet':
+    command => 'pip install -U eventlet',
+    path    => '/usr/local/bin/:/usr/bin/:/bin',
+    require => Exec['upgrade pip']
   }
 
   exec { 'neutron-db-manage upgrade head':
