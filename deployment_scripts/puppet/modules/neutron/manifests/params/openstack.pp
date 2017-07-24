@@ -17,7 +17,7 @@
 class neutron::params::openstack {
   $fgt_hash                    = hiera('fuel-plugin-fortinet')
 
-  $networking_fortinet_version = '1.1.3'
+  $networking_fortinet_version = '1.1.4'
 
   if($::osfamily == 'Redhat') {
     $fwaas_package      = 'python-neutron-fwaas'
