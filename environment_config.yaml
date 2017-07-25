@@ -65,7 +65,7 @@ attributes:
   fortigate_external_port:
     value: ""
     label: "Enter the physical port on FortiGate for external network"
-    descrption: "Enter the physical port on FortiGate for external network"
+    description: "Enter the physical port on FortiGate for external network"
     weight: 30
     type: "text"
 

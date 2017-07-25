@@ -42,8 +42,10 @@ class neutron::configure_fortigate_ml2 {
 #    require  => Exec['upgrade pip'],
 #  }
 
+# SSL23_GET_SERVER_HELLO: unknown protocol error when use default eventlet
+# on ubuntu, have to reinstall eventlet to work.
   exec { 'upgrade eventlet':
-    command => 'pip install -U eventlet',
+    command => 'pip install -I --force-reinstall eventlet==0.18.4',
     path    => '/usr/local/bin/:/usr/bin/:/bin',
     require => Exec['upgrade pip']
   }
