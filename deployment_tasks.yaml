@@ -4,16 +4,9 @@
 - id: configure-fortigate-ml2
   type: puppet
   role: [controller, primary-controller]
-  requires: [post_deployment_start]
+  version: 2.0.0              # tasks v2.0.0 is supporting task-based deployment
   required_for: [configure-fortigate-fwaas]
-
-
-#  version: 2.0.0              # tasks v2.0.0 is supporting task-based deployment
-#   cross-depends:
-#     - name: deploy_start
-#   cross-depended-by:
-#     - name: deploy_end
-
+  requires: [post_deployment_start]
   parameters:
     puppet_manifest: puppet/manifests/configure-fortigate-ml2.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
@@ -22,8 +15,9 @@
 - id: configure-fortigate-fwaas
   type: puppet
   role: [controller, primary-controller]
-  requires: [configure-fortigate-ml2]
+  version: 2.0.0              # tasks v2.0.0 is supporting task-based deployment
   required_for: [post_deployment_end]
+  requires: [configure-fortigate-ml2]
   parameters:
     puppet_manifest: puppet/manifests/configure-fortigate-fwaas.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
@@ -32,57 +26,42 @@
 - id: configure-fortigate-nova
   type: puppet
   role: ['compute']
-  requires: [post_deployment_start]
+  version: 2.0.0              # tasks v2.0.0 is supporting task-based deployment
   required_for: [post_deployment_end]
+  requires: [post_deployment_start]
   parameters:
     puppet_manifest: puppet/manifests/configure-fortigate-nova.pp
     puppet_modules: puppet/modules:/etc/puppet/modules
     timeout: 360
 
-#- id: fuel-plugin-fortinet-post-deployment-sh
-#  version: 2.0.0
-#  type: shell
-#  role: [fuel-plugin-fortinet_role]
-#  requires: [post_deployment_start]
-#  required_for: [post_deployment_end]
-#  parameters:
-#    cmd: echo post_deployment_task_executed > /tmp/post_deployment
-#    retries: 3
-#    interval: 20
-#    timeout: 180
-
-#- id: fuel-plugin-fortinet-pre-deployment-sh
-#  version: 2.0.0
-#  type: shell
-#  role: [fuel-plugin-fortinet_role]
-#  requires: [pre_deployment_start]
-#  required_for: [pre_deployment_end]
-#  parameters:
-#    cmd: echo pre_deployment_task_executed > /tmp/pre_deployment
-#    retries: 3
-#    interval: 20
-#    timeout: 180
-
 - id: primary-openstack-network-agents-l3
+  role: [controller, primary-controller]
   type: skipped
 
 - id: openstack-network-agents-l3
+  role: [controller, primary-controller]
   type: skipped
 
 - id: primary-openstack-network-agents-dhcp
+  role: [controller, primary-controller]
   type: skipped
 
 - id: openstack-network-agents-dhcp
+  role: [controller, primary-controller]
   type: skipped
 
 - id: openstack-network-agents-metadata
+  role: [controller, primary-controller]
   type: skipped
 
 - id: primary-openstack-network-agents-metadata
+  role: [controller, primary-controller]
   type: skipped
 
 - id: openstack-network-networks
+  role: [controller, primary-controller]
   type: skipped
 
 - id: openstack-network-routers
+  role: [controller, primary-controller]
   type: skipped
