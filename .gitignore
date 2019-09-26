@@ -1,5 +1,0 @@
-.tox
-.build
-*.pyc
-*.rpm
-doc/build

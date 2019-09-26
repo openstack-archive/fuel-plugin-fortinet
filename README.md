@@ -1,6 +1,3 @@
-fuel-plugin-fortinet
-============
+# This repo has moved to OpenDev
 
-Fuel plugin to deploy Fortinet FortiGate ML2 plugin. This Fuel plugins works
-on Fuel 9.0 for OpenStack Mitaka version.
-For liberty version, please use stable/8.0 branch to work with Fuel 8.0.
+It can now be found at [https://opendev.org/x/fuel-plugin-fortinet](https://opendev.org/x/fuel-plugin-fortinet)
